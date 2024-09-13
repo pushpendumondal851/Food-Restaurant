@@ -3,6 +3,10 @@
 
 A responsive restaurant website featuring a variety of food categories such as Vegetarian, Non-Vegetarian, Burgers, and more. This project provides a seamless browsing experience with cart functionality, developed using HTML, CSS, Bootstrap, and JavaScript.
 
+## Live Demo
+
+Check out the live version of the project here: [Ahare Bahare Live](https://pushpendumondal851.github.io/Food-Restaurant/)
+
 ## Features
 
 - **Responsive Design**: Adapts to different screen sizes (mobile, tablet, and desktop).
