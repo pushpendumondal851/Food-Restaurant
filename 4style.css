@@ -1,0 +1,119 @@
+.navbar-brand1{
+	text-decoration: underline #fff;
+	color: #FFF455;
+	font-size: 25px;
+}
+
+.container.jkl{
+	margin-top: 90px;
+}
+
+
+.container.jkl{
+	background-color: #212529;
+	
+}
+
+
+.nav-link{
+	margin-left: 60px;
+	color: #fff;
+}
+
+
+.carde.text-center{
+	border-color: transparent;
+}
+
+
+
+.carde-title{
+	font-size: 40px;
+	color: #FFF455;
+	-webkit-text-stroke: 0.8px #000000;
+}
+
+
+.card.mb-3{
+	border: transparent;
+
+}
+
+.card-title4{
+	margin-left: 15px;
+}
+
+.card-text{
+	margin-left: 15px;
+}
+
+.col-md-4 img{
+	border: 2px solid #000000;
+}
+
+.card-title5{
+	font-size: 35px;
+}
+
+.card-body7 p{
+	font-size: 18px;
+
+}
+
+.lll button{
+	width: 200px;
+	height: 70px;
+	margin-top: 15px;
+	border-radius: 20px;
+	margin-left: 15px;
+	background-color: #06D001;
+	border: 2px solid #000000;
+
+}
+
+
+.carde ul li{
+	text-align: center;
+}
+
+
+.carde ul li a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.carde ul li a:hover{
+	color: #3572EF;
+	text-decoration: underline;
+	transition: 0.5s;
+}
+
+.fa{
+	margin-right: 8px;
+}
+
+
+M p{
+	font-size: 30px;
+	margin-top: 50px;
+	color: #4C3BCF;
+}
+
+Z p{
+	font-size: 25px;
+	margin-top: 50px;
+	text-decoration: underline;
+	color: #4C3BCF;
+}
+
+/* Hover effect for the cards */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slightly scale up the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+}
+
+

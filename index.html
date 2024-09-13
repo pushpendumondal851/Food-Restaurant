@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>Carousel Template · Bootstrap v5.3</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#712cf9">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+      /* Initial state: Off-screen (below) and hidden */
+      .col {
+        opacity: 0;
+        transform: translateY(50px); /* Shift the items 50px down */
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+      }
+
+      /* Animation class: visible and back to normal position */
+      .col.animate {
+        opacity: 1;
+        transform: translateY(0); /* Move back to the original position */
+      }
+      /* Initial state for sections off-screen and hidden */
+      /* Initial state for sections off-screen and hidden */
+      /* General section styles */
+/* General section styles */
+/* Base styles for sections */
+
+
+        /* Base styles for sections */
+
+        .featurette img {
+          max-width: 100%; /* Ensure image is responsive */
+          height: auto; /* Maintain aspect ratio */
+          margin-right: 20px;
+          
+          
+        }
+        
+        .featurette {
+          opacity: 0; /* Initially hide the sections */
+          transform: translateY(50px); /* Move sections down initially */
+          transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition */
+          display: flex;
+          justify-content: space-between; /* Ensure content is spread out */
+          align-items: center;
+          max-width: 1200px; /* Set a maximum width for content */
+          margin: 0 auto; /* Center the featurette horizontally */
+          padding: 20px; /* Add padding for spacing */
+          flex-direction: row; /* Ensure the image and text are side by side */
+          flex-wrap: wrap; /* Ensure content wraps on smaller screens */
+        }
+        
+        
+        /* Flex container */
+        .featurette-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          padding: 20px 0; /* Add padding for spacing between sections */
+        }
+        
+        /* Animation for appearing from left */
+        .featurette.appear-left,
+        .featurette.appear-right {
+          opacity: 1;
+          transform: translateY(0); /* Remove vertical translation */
+        }
+        
+        /* Responsive layout for screens smaller than 768px (tablets and smaller) */
+        @media (max-width: 768px) {
+          .featurette {
+            flex-direction: column; /* Stack image and text vertically */
+            text-align: center; /* Center-align text */
+            padding: 10px; /* Adjust padding */
+          }
+        
+          /* Adjust image for smaller screens */
+          .featurette img {
+            max-width: 80%; /* Reduce image width for better fit */
+            margin: 10px auto; /* Center the image and add vertical spacing */
+          }
+
+        }
+        
+        /* Responsive layout for screens smaller than 480px (mobile devices) */
+        @media (max-width: 480px) {
+          .featurette {
+            padding: 5px; /* Further reduce padding for smaller screens */
+          }
+        
+          /* Further reduce image size on mobile devices */
+          .featurette img {
+            max-width: 100%; /* Use the full width of the screen */
+            margin: 10px auto 15px; /* Add some space below the image */
+          }
+        
+          .featurette-container {
+            padding: 10px 0; /* Adjust padding for spacing */
+          }
+          .button{
+            margin-bottom: 10px;
+          }
+        }
+        
+
+
+
+
+      
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="2style.css" rel="stylesheet">
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    
+    <header data-bs-theme="dark">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand2"><img src="images/R.png" width="65px"></a>
+          <a class="navbar-brand1" >আহারে বাহারে.....</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="our-menu.html"><i class="fa fa-cutlery" style="font-size:18px;color:#fff"></i>Our Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="sign-up.html"><i class="fa fa-user-circle-o" style="font-size:18px;color:#fff"></i>Sign-up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="cart.html"><i class="fa fa-shopping-cart" style="font-size:18px;color:#fff"></i>Cart</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search your food" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <section class="container abc">
+
+      <!-- Carousel Section -->
+      <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <a href="Non-veg.html">
+            <div class="carousel-item active">
+              <img src="f1.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h3>Get the 20% Off !!</h3>
+                <p>On every Non-veg Platter.....</p>
+              </div>
+            </div>
+          </a>
+          <a href="#">
+            <div class="carousel-item">
+              <img src="f2.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h3>জামাই ষষ্ঠী Special....</h3>
+                <p>Full Platter Combo at Just ₹699.</p>
+              </div>
+            </div>
+          </a>
+          <a href="Sweets.html">
+            <div class="carousel-item">
+              <img src="f3.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h3>𝓣𝓪𝓼𝓽𝓮 𝓽𝓱𝓮 𝓔𝔁𝓸𝓽𝓲𝓬 𝓕𝓵𝓪𝓿𝓸𝓾𝓻 𝓸𝓯 𝓗𝓪𝓷𝓭-𝓜𝓪𝓭𝓮 𝓢𝔀𝓮𝓮𝓽𝓼.</h3>
+                <p>Up to 30% Off !!</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- Marketing Messaging and Featurettes -->
+    <div class="container marketing">
+
+      <!-- Three Columns of Text Below the Carousel -->
+      <section id="scroll-section" class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img src="f4.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Chinese-Combo-Platter Under ₹299</h5>
+              <p class="card-text">
+                In this Platter you can get 5-6 items at shareable quantity. In this platter you can get Fried-Rice, Mixed-Hakka-Noodles, chilli-Potato, 4pcs of spring rolls, 4pcs of chilli-chicken and 2pcs of Dragon-chicken.
+              </p>
+              <p class="card-text" style="padding-top: 25px; font-size: 20px; color: #F5004F; -webkit-text-stroke: 0.25px #000000;">
+                𝑮𝒓𝒂𝒃 𝒕𝒉𝒊𝒔 𝒄𝒐𝒎𝒃𝒐 𝒅𝒆𝒂𝒍 𝒂𝒕 20%-𝑶𝒇𝒇!! 𝒐𝒏 𝒑𝒂𝒚𝒎𝒆𝒏𝒕𝒔 𝒐𝒇 𝑷𝒂𝒚𝒕𝒎.
+              </p>
+              <button style="margin-top: 10px;"><a href="#">Add to Cart</a></button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="f5.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Veg-Maharaja-Thali Under ₹499</h5>
+              <p class="card-text">
+                This Thali comes with 9-10 different items at very reasonable price. In this thali you can get 4pcs of roti, paneer butter masala, Dal Makhni, basmati rice, Tadka-Dal, Raita, 2pcs of samossas, papad, Aam-Chatni and 2pcs of Gulab-Jamun.
+              </p>
+              <p class="card-text" style="font-size: 20px; color: #F5004F; -webkit-text-stroke: 0.25px #000000;">
+                𝑮𝒓𝒂𝒃 𝒕𝒉𝒊𝒔 𝒐𝒇𝒇𝒆𝒓 𝒂𝒕 15% 𝒅𝒊𝒔𝒄𝒐𝒖𝒏𝒕 𝒐𝒏 𝒚𝒐𝒖𝒓 𝒇𝒊𝒓𝒔𝒕 𝒐𝒓𝒅𝒆𝒓
+              </p>
+              <button style="margin-top: 8px;"><a href="#">Add to Cart</a></button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="f6.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Snacks-Platter starting from ₹145</h5>
+              <p class="card-text">
+                Let's make your Every Evening special with a delightful Snacks. In this platter you can get 6pcs of chicken pakodas which are deeply fried make it more crispier and spicer with different spices and inside with juicy soft chicken.
+              </p>
+              <p class="card-text" style="padding-top: 3px; font-size: 20px; color: #F5004F; -webkit-text-stroke: 0.25px #000000;">
+                𝑮𝒆𝒕 10% 𝒅𝒊𝒔𝒄𝒐𝒖𝒏𝒕 𝒐𝒏 𝒕𝒉𝒊𝒔 𝒐𝒓𝒅𝒆𝒓 𝒘𝒊𝒕𝒉 𝑷𝒂𝒚𝒕𝒎/𝑷𝒉𝒐𝒏𝒆𝑷𝒂𝒚.
+              </p>
+              <button style="margin-top: 5px;"><a href="#">Add to Cart</a></button>
+            </div>
+          </div>
+        </div>
+      </section><!-- /.row -->
+
+      <!-- Featurettes Section -->
+      <hr class="featurette-divider">
+
+      <!-- 1st feature -->
+
+      
+      <section class="row featurette">
+        <div class="col-md-12">
+          <div class="card mb-3" style="max-width: 100%;">
+            <div class="row g-0">
+              <div class="col-md-8">
+                <div class="card-body7">
+                  <h5 class="card-title5">Kachori Aloo-Sabji and Jalebi</h5>
+                  <h5 class="card-title5">Under ₹80</h5>
+                  <p class="card-text">
+                    Make your everyday Breakfast special with Home-made kachoris sabji and Jalebis.
+                  </p>
+                  <p class="card-text">
+                    In this plate you get 4 pieces of kachori and Sufficient amount of Sabji with 2 pieces of Jalebis.
+                  </p>
+                  <p class="card-text">
+                    Get the Exciting Extra 10% off on payments of Paytm.
+                  </p>
+                </div>
+                <div class="ll">
+                  <button>Add to Cart<i class="fa fa-shopping-cart" style="font-size:18px;color:#000000; margin: 10px;"></i></button>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <img src="images/OIP.jpg" width="500" class="img-fluid rounded-start" alt="...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="featurette-divider">
+
+
+      <!-- 2nd feature -->
+      <section class="row featurette">
+        <div class="col-md-12">
+          <div class="card mb-3" style="max-width: 100%;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="images/r2.jpg" width="500" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body6">
+                  <h5 class="card-title4">Mutton-Kosha</h5>
+                  <h5 class="card-title4">Under ₹235</h5>
+                  <p class="card-text">
+                    Feel the real taste and richness of Indian Masalas with Mutton which will fill your mouth wonders of taste and make your lunch exciting.
+                  </p>
+                  <p class="card-text">
+                    You will get 4 pieces of Mutton at very affordable price.
+                  </p>
+                  <p class="card-text">
+                    Get the Exciting Extra 10% off on payments of Paytm.
+                  </p>
+                </div>
+                <div class="lll">
+                  <button><i class="fa fa-shopping-cart" style="font-size:18px;color:#000000; margin: 10px;"></i>Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="featurette-divider">
+
+      <!-- 3rd feature -->
+      <section class="row featurette">
+        <div class="col-md-12">
+          <div class="card mb-3" style="max-width: 100%;">
+            <div class="row g-0">
+              <div class="col-md-8">
+                <div class="card-body7">
+                  <h5 class="card-title5">Bakery-cake Box</h5>
+                  <h5 class="card-title5">Under ₹280</h5>
+                  <p class="card-text">
+                    Enjoy the softness and delicious taste of bakery cakes at very affordable prices and make every moment special with others.
+                  </p>
+                  <p class="card-text">
+                    You can get 6 Pieces of cake at every box.
+                  </p>
+                  <p class="card-text">
+                    Ingredients: No Added preservatives, totally Hand-made and Eggless cakes. Use the rich flavour of chocolate to make it more delightful.
+                  </p>
+                  <p class="card-text">
+                    Get the Exciting Extra 10% off on payments of Paytm.
+                  </p>
+                </div>
+                <div class="ll">
+                  <button>Add to Cart<i class="fa fa-shopping-cart" style="font-size:18px;color:#000000; margin: 10px;"></i></button>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <img src="images/r3.jpg" width="500" class="img-fluid rounded-start" alt="...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="featurette-divider">
+
+    </div><!-- /.container -->
+    <div class="container nn" style="background-color:#BBE9FF; border-radius: 15px; border: 2px solid #071952;">
+      <M><p>আহারে বাহারে: Delivering Happiness</p></M>
+      <j style="font-size: 18px;">What’s better than having a good food, you ask?
+        <br>
+        <br>
+      Having that good and healthy food in the comfort of your own home with the ones you love, we say.
+      <br>
+      <br>
+      With আহারে বাহারে it is always “Wonders of Taste”. Whether it's a treat for your promotion, a kid topping his class or winning the heart of your wife who is too tired to cook after a long day at work! A good and healthy food is all one needs to put things into perspective and start any celebration. Plus, you do not even need to rush to the restaurant to have one now. A call, a few clicks on our website or a few touches on the mobile screen is all you have to do to have that tempting, light-on-the-pocket-friendly food at your doorstep.
+
+      There is something for everyone here.</j>
+      <M><p>The promise of 30-Minute Delivery</p></M>
+      <j style="font-size: 18px;">
+        We always trying to deliver your food within 30-minutes our outlets were everywhere to make the delivery as fast as we can . Don't belive us? Time it if you want.
+        <br>
+        <br>
+        Currently in WEST BENGAL we have more than 200 outlets to make the delivery as fast as we can and always try to maintain the Smile and friendly behaviour of customer with us. 
+      </j>
+    </div>
+    <!-- FOOTER -->
+    <div class="container-fluid" style="background-color:#071952; border-radius: 20px; margin-top: 10px;">
+
+      <div class="row">
+
+            <div class="col-md-3">
+              <div class="carde" style="width: 18rem; background-color: #071952; border-color: transparent;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" style="background-color: #071952; color:#51829B; border-color: transparent; font-size:25px;">Company</li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Blog</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Investor</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Feedback</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Ads</a></li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="col-md-3">
+              <div class="carde" style="width: 18rem; background-color: #071952; border-color: transparent;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" style="background-color: #071952; color:#51829B; border-color: transparent; font-size:25px;">About</li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Gift Card</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Card Balance Enquiry</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">FAQ</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">E-Gift Vouchers</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Team</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="carde" style="width: 18rem; background-color: #071952; border-color: transparent;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" style="background-color: #071952; color:#51829B; border-color: transparent; font-size:25px;">Legal</li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Disclaimer</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Terms & Condition</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Cookie Policy</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Privacy Policy</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><a href="#">Investor Relation</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="carde" style="width: 18rem; background-color: #071952; border-color: transparent;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" style="background-color: #071952; color:#51829B; border-color: transparent; font-size:25px;">Social Media</li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><i class="fa fa-facebook-official" style="font-size:18px;color:#fff"></i><a href="#">Facebook</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><i class="fa fa-twitter" style="font-size:18px;color:#fff"></i><a href="#">Twitter</a></li>
+                  <li class="list-group-item" style="background-color: #071952; color:#fff; border-color: transparent;"><i class="fa fa-instagram" style="font-size:18px;color:#fff"></i><a href="#">Instagram</a></li>
+                </ul>
+              </div>
+            </div>
+
+
+
+      </div>
+    </div>
+    <footer class="container-fluid" style="background-color:#071952; margin-top: 0.8px; height: 50px; border-radius: 15px;">
+      <p class="float-end"><a href="#">Back to top</a></p>
+      <p style="color:#fff;">All Rights Reserved. Copyright&copy; 2022–2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    
+   </script>
+   <!-- Custom JavaScript for scroll effect -->
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollSection = document.getElementById('scroll-section'); // Target section
+      const columns = document.querySelectorAll('.col'); // All columns in the section
+      
+      // Function to check if the section is in the viewport
+      function isSectionInView() {
+          const rect = scrollSection.getBoundingClientRect();
+          return rect.top < window.innerHeight && rect.bottom > 0;
+      }
+  
+      // Function to trigger animation when the section comes into view
+      function handleScrollAnimation() {
+          if (isSectionInView()) {
+              columns.forEach(column => {
+                  column.classList.add('animate'); // Add 'animate' class to each column
+              });
+          }
+      }
+  
+      // Attach scroll event listener
+      window.addEventListener('scroll', handleScrollAnimation);
+  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top < window.innerHeight &&
+        rect.bottom >= 0
+      );
+    }
+
+    function animateOnScroll() {
+      const sections = document.querySelectorAll('.featurette');
+      
+      sections.forEach((section, index) => {
+        if (isInViewport(section)) {
+          if (index % 2 === 0) {
+            section.classList.add('appear-left');
+          } else {
+            section.classList.add('appear-right');
+          }
+        }
+      });
+    }
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll); // To check visibility on page load
+  });
+  
+  </script>
+  
+  </body>
+</html>
